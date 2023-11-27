@@ -11,10 +11,20 @@ export default function App() {
 	const [showResults, setShowResults] = React.useState(false)
 	const [resultsReady, setResultsReady] = React.useState(false)
 
-	function handleClick() {
-	
+
+/*---------------------Added---Code---------------------------------------------*/
+	function handleClick(event) {
+		const likedEmjoy =event.target.textContent
+		setLikedEmojis(prevLiked=> ([...prevLiked, likedEmjoy]))
+		
+		const passedEmjoy = currentEmojis.filter(emojy =>{
+			return likedEmjoy!==emojy
+		})
+		setPassedEmojis(prevPassed => ([...prevPassed,...passedEmjoy ]))
+		
+		setCurrentEmojis(getRandomEmojis)
 	}
-	
+/*-------------------------------------------------------------------------------*/
 /* Challenge
 
 	The handleClick function above needs to be completed for the app to work. The function should do three things when it is invoked by the user clicking on one of the buttons (lines 84 to 92): 
